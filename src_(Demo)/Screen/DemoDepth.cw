@@ -44,20 +44,40 @@ package  {
 		public function DemoDepth( _oParent : Root ):Void {
 			Clip(_oParent, 0.0, 0.0);
 			
+			oAtlas = new RcAtlas(1024);
+			oDepthAtlas = new RcAtlas(1024);
+			
+			
 			
 			oRcBush = new  RcImg("Exe|Rc/Bush.png");
 			oRcRock = new  RcImg("Exe|Rc/Rock.png");
-			
-						
 			var _oDepthRcBush : RcImg = new  RcImg("Exe|Rc/BushDepth.png");
 			var _oDepthRcRock : RcImg = new  RcImg("Exe|Rc/RockDepth.png");
 			
+			////////////////////////////////////////////////////
+			oRcBush.fCpuLoad();
+			oRcRock.fCpuLoad();
 			_oDepthRcBush.fCpuLoad();
 			_oDepthRcRock.fCpuLoad();
 			
 			
+			if(Context.oItf.bGpuDraw){
+
+				_oDepthRcBush.fSetGpuTexLayer(Attribute_Quad.oTexture);
+				_oDepthRcBush.fGpuLoad();
+			}
+			oAtlasImg  = new Img(this, 0, 0,  _oDepthRcBush, false);
 			
-			oAtlas = new RcAtlas(1024);
+			
+			
+			
+			
+			//return;
+			////////////////////////////////////////////////////	////////////////////////////////////////////////////
+			
+					
+			
+		//	oAtlas = new RcAtlas(1024);
 			oAtlas.fAdd(oRcBush);
 			oAtlas.fAdd(oRcRock);
 			oAtlas.fPack();
@@ -72,7 +92,7 @@ package  {
 		
 			//var _oDepthRcRock : RcImg = new  RcImg("Exe|Rc/Rock.png");
 
-			oDepthAtlas = new RcAtlas(1024);
+		//	oDepthAtlas = new RcAtlas(1024);
 			oDepthAtlas.fAdd(_oDepthRcBush);
 			oDepthAtlas.fAdd(_oDepthRcRock);
 			oDepthAtlas.fPack();
