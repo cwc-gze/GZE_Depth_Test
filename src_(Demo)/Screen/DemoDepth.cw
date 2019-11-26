@@ -107,6 +107,8 @@ package  {
 			
 			oImg = new Img(this, 0.0, 0.0, oRcBush, false);
 			oRock = new Img(this, 800.0, 600.0, oRcRock, true);
+			
+			Debug.fWarning("---------------------------- 1");
 
 		}
 
