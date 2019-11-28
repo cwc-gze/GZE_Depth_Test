@@ -19,10 +19,13 @@ package  {
 	import Demo.Screen.DemoDepth;
 	//import Demo.Screen.FpsCount;
 	import Demo.Screen.DemoText;
+	import Demo.Shader.DepthTestShader;
 	
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel;
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Minimal;
-	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Quad;
+	
+	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Quad.GzShModel_Quad;
+	
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Raymarching;
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Shadertoy;
 	import GZ.Gpu.ShaderModel.GzModel.GzShModel_Tiles;
@@ -108,8 +111,9 @@ package  {
 		
 		
 		override public function fLoadShader():Bool {
+			oGzShModel = new DepthTestShader();
 			//oGzShModel = new GzShModel_Tiles();
-			oGzShModel = new GzShModel_Quad();
+			//oGzShModel = new GzShModel_Quad();
 			//oGzShModel = new GzShModel_Minimal();
 			//oGzShModel = new GzShModel_Shadertoy();
 			return true;
@@ -132,7 +136,6 @@ package  {
 			Debug.fTrace("---DemoRoll");
 			//oDemo = new DemoRoll(this);
 			oDemo = new DemoDepth(this);
-			
 			
 			//return;
 			
